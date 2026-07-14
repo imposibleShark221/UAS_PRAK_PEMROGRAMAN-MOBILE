@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loginUser } from '../services/auth';
 
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
    * We allow user to type their email but pass it as `username`
    * field since DummyJSON treats username = 'emilys' / 'alexanderw' etc.
    */
-  const login = useCallback(async (emailOrUsername, password) => {
+  const login = async (emailOrUsername, password) => {
     // DummyJSON demo users use usernames, not emails.
     // Extract the part before @ if it's an email for a smoother UX.
     const username = emailOrUsername.includes('@')
@@ -74,12 +74,12 @@ export const AuthProvider = ({ children }) => {
 
     setToken(accessToken);
     setUser(userData);
-  }, []);
+  };
 
   /**
    * Logout: clear AsyncStorage, reset state.
    */
-  const logout = useCallback(async () => {
+  const logout = async () => {
     try {
       await Promise.all([
         AsyncStorage.removeItem(AUTH_TOKEN_KEY),
@@ -90,12 +90,12 @@ export const AuthProvider = ({ children }) => {
     }
     setToken(null);
     setUser(null);
-  }, []);
+  };
 
   /**
    * Toggle a product in/out of the wishlist.
    */
-  const toggleWishlist = useCallback((product) => {
+  const toggleWishlist = (product) => {
     setWishlist((prev) => {
       const isInWishlist = prev.some((item) => item.id === product.id);
       if (isInWishlist) {
@@ -104,22 +104,19 @@ export const AuthProvider = ({ children }) => {
         return [...prev, product];
       }
     });
-  }, []);
+  };
 
   /**
    * Check if a product is in the wishlist.
    */
-  const isWishlisted = useCallback(
-    (productId) => wishlist.some((item) => item.id === productId),
-    [wishlist]
-  );
+  const isWishlisted = (productId) => wishlist.some((item) => item.id === productId);
 
   /**
    * Remove a product from wishlist by id.
    */
-  const removeFromWishlist = useCallback((productId) => {
+  const removeFromWishlist = (productId) => {
     setWishlist((prev) => prev.filter((item) => item.id !== productId));
-  }, []);
+  };
 
   const value = {
     user,

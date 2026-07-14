@@ -9,12 +9,3 @@ export const fetchProducts = async () => {
   return response.data.products;
 };
 
-/**
- * Fetch a single product by ID.
- * @param {number} id
- * @returns {Promise<object>} product object
- */
-export const fetchProductById = async (id) => {
-  const response = await api.get(`/products/${id}`);
-  return response.data;
-};
