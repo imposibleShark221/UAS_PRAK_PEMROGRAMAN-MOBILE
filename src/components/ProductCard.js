@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { Heart } from 'lucide-react-native';
+import { formatRupiah } from '../utils/currency';
 
 /**
  * ProductCard - Premium product list card.
@@ -31,7 +32,7 @@ const ProductCard = ({ product, onPress }) => {
       {/* Thumbnail */}
       <View style={styles.imageContainer}>
         <Image
-          source={{ uri: product.thumbnail }}
+          source={product.thumbnail}
           style={styles.image}
           resizeMode="cover"
         />
@@ -77,9 +78,7 @@ const ProductCard = ({ product, onPress }) => {
         </View>
 
         {/* Price */}
-        <Text style={styles.price}>
-          ${product.price?.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-        </Text>
+        <Text style={styles.price}>{formatRupiah(product.price)}</Text>
       </View>
     </TouchableOpacity>
   );

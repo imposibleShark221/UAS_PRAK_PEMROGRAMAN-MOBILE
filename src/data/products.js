@@ -1,0 +1,300 @@
+/**
+ * Local mock product data for KampusMarket.
+ *
+ * This replaces the previous DummyJSON API integration. Using local data
+ * means the app works 100% offline and is never affected by network,
+ * DNS, firewall, or third-party API downtime issues.
+ *
+ * Images are bundled local assets (require(...)) instead of remote URLs
+ * (e.g. picsum.photos), since remote image CDNs were also being blocked
+ * by the same network/firewall issues as the old API. Bundled images
+ * always render, with or without internet.
+ *
+ * Prices are plain numbers representing whole Rupiah (IDR), formatted
+ * for display with src/utils/currency.js (formatRupiah).
+ */
+
+const PRODUCTS = [
+  {
+    id: 1,
+    title: 'Laptop UltraBook 14"',
+    description:
+      'Laptop ringan dengan performa tinggi, cocok untuk mahasiswa yang butuh perangkat untuk kuliah, desain, dan multitasking sehari-hari.',
+    price: 8999000,
+    discountPercentage: 12.5,
+    rating: 4.6,
+    stock: 18,
+    brand: 'TechnoPro',
+    category: 'elektronik',
+    thumbnail: require('../../assets/products/1.png'),
+    images: [require('../../assets/products/1.png'), require('../../assets/products/1_alt.png')],
+  },
+  {
+    id: 2,
+    title: 'Wireless Earbuds Pro',
+    description:
+      'Earbuds nirkabel dengan noise cancelling, baterai tahan lama, dan kualitas suara jernih untuk menemani belajar atau nongkrong.',
+    price: 349000,
+    discountPercentage: 20,
+    rating: 4.3,
+    stock: 54,
+    brand: 'SoundMax',
+    category: 'elektronik',
+    thumbnail: require('../../assets/products/2.png'),
+    images: [require('../../assets/products/2.png'), require('../../assets/products/2_alt.png')],
+  },
+  {
+    id: 3,
+    title: 'Kemeja Flanel Pria',
+    description:
+      'Kemeja flanel motif kotak-kotak, bahan lembut dan adem, cocok dipakai kuliah maupun santai.',
+    price: 129000,
+    discountPercentage: 5,
+    rating: 4.1,
+    stock: 76,
+    brand: 'UrbanWear',
+    category: 'fashion-pria',
+    thumbnail: require('../../assets/products/3.png'),
+    images: [require('../../assets/products/3.png'), require('../../assets/products/3_alt.png')],
+  },
+  {
+    id: 4,
+    title: 'Dress Casual Wanita',
+    description:
+      'Dress casual dengan potongan simpel dan nyaman dipakai untuk kuliah maupun jalan-jalan bersama teman.',
+    price: 179000,
+    discountPercentage: 8,
+    rating: 4.4,
+    stock: 40,
+    brand: 'ChicStyle',
+    category: 'fashion-wanita',
+    thumbnail: require('../../assets/products/4.png'),
+    images: [require('../../assets/products/4.png'), require('../../assets/products/4_alt.png')],
+  },
+  {
+    id: 5,
+    title: 'Sepatu Sneakers Putih',
+    description:
+      'Sneakers putih serbaguna, mudah dipadukan dengan outfit apa saja, sol empuk untuk aktivitas seharian di kampus.',
+    price: 259000,
+    discountPercentage: 15,
+    rating: 4.5,
+    stock: 62,
+    brand: 'StepUp',
+    category: 'sepatu',
+    thumbnail: require('../../assets/products/5.png'),
+    images: [require('../../assets/products/5.png'), require('../../assets/products/5_alt.png')],
+  },
+  {
+    id: 6,
+    title: 'Keripik Singkong Pedas 250g',
+    description:
+      'Camilan keripik singkong renyah dengan bumbu pedas gurih, teman begadang mengerjakan tugas.',
+    price: 18000,
+    discountPercentage: 0,
+    rating: 4.7,
+    stock: 120,
+    brand: 'SnackKita',
+    category: 'makanan',
+    thumbnail: require('../../assets/products/6.png'),
+    images: [require('../../assets/products/6.png')],
+  },
+  {
+    id: 7,
+    title: 'Kopi Susu Kemasan Sachet (isi 10)',
+    description:
+      'Kopi susu instan praktis, cukup seduh air panas, cocok untuk stok kamar kos mahasiswa.',
+    price: 24000,
+    discountPercentage: 10,
+    rating: 4.5,
+    stock: 200,
+    brand: 'KopiKita',
+    category: 'makanan',
+    thumbnail: require('../../assets/products/7.png'),
+    images: [require('../../assets/products/7.png')],
+  },
+  {
+    id: 8,
+    title: 'Novel "Jejak Senja"',
+    description:
+      'Novel fiksi karya penulis lokal bergenre drama keluarga, cocok untuk mengisi waktu luang di sela kuliah.',
+    price: 68000,
+    discountPercentage: 0,
+    rating: 4.8,
+    stock: 30,
+    brand: 'Penerbit Nusantara',
+    category: 'buku',
+    thumbnail: require('../../assets/products/8.png'),
+    images: [require('../../assets/products/8.png')],
+  },
+  {
+    id: 9,
+    title: 'Buku Catatan Kuliah A5 (isi 3)',
+    description:
+      'Set buku catatan A5 dengan kertas berkualitas, cocok untuk mencatat materi kuliah dan tugas.',
+    price: 35000,
+    discountPercentage: 0,
+    rating: 4.6,
+    stock: 90,
+    brand: 'StudyMate',
+    category: 'alat-tulis',
+    thumbnail: require('../../assets/products/9.png'),
+    images: [require('../../assets/products/9.png')],
+  },
+  {
+    id: 10,
+    title: 'Tas Ransel Laptop 15"',
+    description:
+      'Tas ransel dengan kompartemen laptop empuk, tahan air, banyak kantong untuk kebutuhan kuliah sehari-hari.',
+    price: 219000,
+    discountPercentage: 18,
+    rating: 4.6,
+    stock: 45,
+    brand: 'CampusGear',
+    category: 'tas',
+    thumbnail: require('../../assets/products/10.png'),
+    images: [require('../../assets/products/10.png'), require('../../assets/products/10_alt.png')],
+  },
+  {
+    id: 11,
+    title: 'Power Bank 10000mAh',
+    description:
+      'Power bank slim dengan fast charging, cocok dibawa ke kampus untuk jaga-jaga baterai HP habis.',
+    price: 145000,
+    discountPercentage: 10,
+    rating: 4.4,
+    stock: 70,
+    brand: 'VoltGo',
+    category: 'elektronik',
+    thumbnail: require('../../assets/products/11.png'),
+    images: [require('../../assets/products/11.png')],
+  },
+  {
+    id: 12,
+    title: 'Kaos Polos Katun Combed',
+    description:
+      'Kaos polos bahan katun combed 30s, adem dan nyaman, tersedia banyak pilihan warna.',
+    price: 55000,
+    discountPercentage: 0,
+    rating: 4.3,
+    stock: 150,
+    brand: 'BasicWear',
+    category: 'fashion-pria',
+    thumbnail: require('../../assets/products/12.png'),
+    images: [require('../../assets/products/12.png')],
+  },
+  {
+    id: 13,
+    title: 'Rok Plisket Wanita',
+    description:
+      'Rok plisket dengan bahan jatuh dan nyaman dipakai, cocok untuk gaya kasual maupun formal ringan.',
+    price: 109000,
+    discountPercentage: 12,
+    rating: 4.2,
+    stock: 55,
+    brand: 'ChicStyle',
+    category: 'fashion-wanita',
+    thumbnail: require('../../assets/products/13.png'),
+    images: [require('../../assets/products/13.png')],
+  },
+  {
+    id: 14,
+    title: 'Mouse Wireless Ergonomis',
+    description:
+      'Mouse wireless dengan desain ergonomis, cocok untuk kerja tugas lama di depan laptop tanpa pegal.',
+    price: 79000,
+    discountPercentage: 5,
+    rating: 4.5,
+    stock: 88,
+    brand: 'TechnoPro',
+    category: 'elektronik',
+    thumbnail: require('../../assets/products/14.png'),
+    images: [require('../../assets/products/14.png')],
+  },
+  {
+    id: 15,
+    title: 'Mie Instan Goreng Spesial (isi 5)',
+    description:
+      'Mie instan goreng dengan bumbu spesial pedas manis, andalan anak kos di akhir bulan.',
+    price: 16000,
+    discountPercentage: 0,
+    rating: 4.6,
+    stock: 300,
+    brand: 'MieKita',
+    category: 'makanan',
+    thumbnail: require('../../assets/products/15.png'),
+    images: [require('../../assets/products/15.png')],
+  },
+  {
+    id: 16,
+    title: 'Jaket Hoodie Unisex',
+    description:
+      'Hoodie tebal dan hangat, cocok dipakai saat AC kelas dingin atau nongkrong malam hari.',
+    price: 159000,
+    discountPercentage: 22,
+    rating: 4.7,
+    stock: 65,
+    brand: 'UrbanWear',
+    category: 'fashion-pria',
+    thumbnail: require('../../assets/products/16.png'),
+    images: [require('../../assets/products/16.png'), require('../../assets/products/16_alt.png')],
+  },
+  {
+    id: 17,
+    title: 'Sandal Jepit Karet',
+    description:
+      'Sandal jepit ringan dan awet, wajib punya buat ke kamar mandi kos atau santai di rumah.',
+    price: 29000,
+    discountPercentage: 0,
+    rating: 4.2,
+    stock: 180,
+    brand: 'StepUp',
+    category: 'sepatu',
+    thumbnail: require('../../assets/products/17.png'),
+    images: [require('../../assets/products/17.png')],
+  },
+  {
+    id: 18,
+    title: 'Pulpen Gel Set (isi 12 warna)',
+    description:
+      'Set pulpen gel warna-warni, cocok untuk membuat catatan kuliah lebih menarik dan mudah dipahami.',
+    price: 42000,
+    discountPercentage: 0,
+    rating: 4.5,
+    stock: 100,
+    brand: 'StudyMate',
+    category: 'alat-tulis',
+    thumbnail: require('../../assets/products/18.png'),
+    images: [require('../../assets/products/18.png')],
+  },
+  {
+    id: 19,
+    title: 'Botol Minum Tumbler 500ml',
+    description:
+      'Tumbler stainless steel yang menjaga suhu minuman tetap dingin/panas, ramah lingkungan buat aktivitas kampus.',
+    price: 89000,
+    discountPercentage: 15,
+    rating: 4.6,
+    stock: 95,
+    brand: 'EcoDrink',
+    category: 'lainnya',
+    thumbnail: require('../../assets/products/19.png'),
+    images: [require('../../assets/products/19.png')],
+  },
+  {
+    id: 20,
+    title: 'Headset Gaming dengan Mic',
+    description:
+      'Headset dengan mic jernih dan bass mantap, cocok untuk gaming maupun kelas online.',
+    price: 199000,
+    discountPercentage: 10,
+    rating: 4.4,
+    stock: 40,
+    brand: 'SoundMax',
+    category: 'elektronik',
+    thumbnail: require('../../assets/products/20.png'),
+    images: [require('../../assets/products/20.png'), require('../../assets/products/20_alt.png')],
+  },
+];
+
+export default PRODUCTS;

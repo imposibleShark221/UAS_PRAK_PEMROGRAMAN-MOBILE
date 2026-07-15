@@ -9,8 +9,9 @@ import {
   StatusBar,
   Dimensions,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import PlatformSafeAreaView from '../utils/safeAreaHelper';
 import { useAuth } from '../context/AuthContext';
+import { formatRupiah } from '../utils/currency';
 import { ArrowLeft, Heart } from 'lucide-react-native';
 
 const { width } = Dimensions.get('window');
@@ -46,7 +47,7 @@ const DetailScreen = ({ route, navigation }) => {
   const stock = stockStatus();
 
   return (
-    <SafeAreaView style={styles.safe} edges={['bottom']}>
+    <PlatformSafeAreaView style={styles.safe} edges={['bottom']}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
       {/* Custom back header */}
@@ -79,7 +80,7 @@ const DetailScreen = ({ route, navigation }) => {
         {/* Main Image */}
         <View style={styles.imageContainer}>
           <Image
-            source={{ uri: selectedImage }}
+            source={selectedImage}
             style={styles.mainImage}
             resizeMode="contain"
           />
@@ -102,7 +103,7 @@ const DetailScreen = ({ route, navigation }) => {
                 ]}
               >
                 <Image
-                  source={{ uri: img }}
+                  source={img}
                   style={styles.thumbnailImage}
                   resizeMode="cover"
                 />
@@ -142,9 +143,7 @@ const DetailScreen = ({ route, navigation }) => {
 
           {/* Price */}
           <View style={styles.priceRow}>
-            <Text style={styles.price}>
-              ${product.price?.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-            </Text>
+            <Text style={styles.price}>{formatRupiah(product.price)}</Text>
             {product.discountPercentage > 0 && (
               <View style={styles.discountBadge}>
                 <Text style={styles.discountText}>
@@ -175,9 +174,7 @@ const DetailScreen = ({ route, navigation }) => {
       <View style={styles.bottomBar}>
         <View style={styles.bottomPrice}>
           <Text style={styles.bottomPriceLabel}>Harga</Text>
-          <Text style={styles.bottomPriceValue}>
-            ${product.price?.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-          </Text>
+          <Text style={styles.bottomPriceValue}>{formatRupiah(product.price)}</Text>
         </View>
         <TouchableOpacity
           style={[
@@ -195,9 +192,9 @@ const DetailScreen = ({ route, navigation }) => {
           </View>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
-  );
-};
+     </PlatformSafeAreaView>
+   );
+ };
 
 const InfoItem = ({ label, value }) => (
   <View style={styles.infoItem}>

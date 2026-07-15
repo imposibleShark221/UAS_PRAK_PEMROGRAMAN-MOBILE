@@ -9,8 +9,9 @@ import {
   Image,
   StatusBar,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import PlatformSafeAreaView from '../utils/safeAreaHelper';
 import { useAuth } from '../context/AuthContext';
+import { formatRupiah } from '../utils/currency';
 import EmptyState from '../components/EmptyState';
 
 const WishlistScreen = ({ navigation }) => {
@@ -26,7 +27,7 @@ const WishlistScreen = ({ navigation }) => {
       activeOpacity={0.9}
     >
       <Image
-        source={{ uri: item.thumbnail }}
+        source={item.thumbnail}
         style={styles.image}
         resizeMode="cover"
       />
@@ -35,9 +36,7 @@ const WishlistScreen = ({ navigation }) => {
         <Text style={styles.name} numberOfLines={2}>
           {item.title}
         </Text>
-        <Text style={styles.price}>
-          ${item.price?.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-        </Text>
+        <Text style={styles.price}>{formatRupiah(item.price)}</Text>
       </View>
       <TouchableOpacity
         style={styles.removeButton}
@@ -50,7 +49,7 @@ const WishlistScreen = ({ navigation }) => {
   );
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
+    <PlatformSafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
       {/* Header */}
@@ -81,7 +80,7 @@ const WishlistScreen = ({ navigation }) => {
           />
         }
       />
-    </SafeAreaView>
+    </PlatformSafeAreaView>
   );
 };
 

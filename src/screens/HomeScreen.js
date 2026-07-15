@@ -10,7 +10,7 @@ import {
   StatusBar,
   RefreshControl,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import PlatformSafeAreaView from '../utils/safeAreaHelper';
 import { fetchProducts } from '../services/product';
 import ProductCard from '../components/ProductCard';
 import Loading from '../components/Loading';
@@ -35,6 +35,7 @@ const HomeScreen = ({ navigation }) => {
       const data = await fetchProducts();
       setProducts(data);
     } catch (err) {
+      console.error('[HomeScreen] Error loading products:', err);
       setError(err);
     } finally {
       setIsLoading(false);
@@ -93,7 +94,7 @@ const HomeScreen = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
+    <PlatformSafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
       {/* Header */}
@@ -193,7 +194,7 @@ const HomeScreen = ({ navigation }) => {
         maxToRenderPerBatch={10}
         windowSize={10}
       />
-    </SafeAreaView>
+    </PlatformSafeAreaView>
   );
 };
 

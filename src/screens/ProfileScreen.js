@@ -8,7 +8,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import PlatformSafeAreaView from '../utils/safeAreaHelper';
 import { useAuth } from '../context/AuthContext';
 import ButtonPrimary from '../components/ButtonPrimary';
 import { Heart, ShoppingBag, MapPin, Bell, Lock, HelpCircle, ChevronRight } from 'lucide-react-native';
@@ -66,7 +66,7 @@ const ProfileScreen = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
+    <PlatformSafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -146,7 +146,7 @@ const ProfileScreen = () => {
           />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </PlatformSafeAreaView>
   );
 };
 
